@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!-- saved from url=(0073)http://www.csc.lsu.edu/~qywang/CS6210/HTMLExercise/Homework2-example.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <title>Motorcycle running</title>
+ </head>
+ <body>
+  
+  <button id="start-button">Start</button>
+  <button id="speed-button">Go Faster!</button>
+  <button id="stop-button">Stop</button>
+  <div id="info"></div>
+  
+  <img style="position:absolute; left: 0px; top: 80px;" src="./Motorcycle running_files/motorCycle.gif">
+
+  <script>
+  
+
+  
+
+
+
+ 
+ 
+
+ 
+  
+ 
+var movePixels = 10;
+var delayMs = 50;
+var catTimer = null;
+var click=0;
+
+function motorCycleRunning() {
+  var img = document.getElementsByTagName('img')[0];
+  var currentLeft = parseInt(img.style.left);
+  img.style.left = (currentLeft + movePixels) + 'px';
+  if (currentLeft > (window.innerWidth-img.width)) {
+    img.style.left = '0px';
+  }
+}
+
+
+function startRunning() {
+if(catTimer==null)
+catTimer = setInterval(motorCycleRunning, delayMs);
+click=click+1;
+
+
+}
+
+
+function startRunningFaster() {
+if(catTimer){
+
+setInterval(motorCycleRunning, delayMs);
+click=click+1;
+}
+}
+
+
+
+
+function stopRunning(){
+	for (var i = 1; i<=click ; i++){
+   window.clearInterval(i);
+   }
+catTimer=null;
+}
+
+
+document.getElementById("start-button").addEventListener("click", startRunning);
+
+document.getElementById("speed-button").addEventListener("click", startRunningFaster);
+document.getElementById("stop-button").addEventListener("click", stopRunning);
+
+
+
+  </script>
+
+ 
+
+</body></html>
